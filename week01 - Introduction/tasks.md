@@ -22,11 +22,11 @@ Tip: Use word.charAt(i) to get the character at position i.
 # Task 4
 Save in characters/string related data the following pattern:
 
-*
+```*
 * *
 * * *
 * * * *
-
+```
 Where the rows are defined by the user input number.
 
 Tip: Think about the difference between String and StringBuilder
