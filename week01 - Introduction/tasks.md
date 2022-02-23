@@ -77,7 +77,8 @@ Mercedes-Benz S220 2009 160 -> 217.5
 Create class DateDifference in which you will have the fields year, month and day defined.
 
 The class will have the follwoing methods:
-
+|method | description|
+--------|--------------
 |boolean isLeapYear() | is checking if the date defined in the object is a leap year|
 |int getCentury() | return the appropriate century|
 |int getDaysDifference(SwiftDate other) | return the difference between the passed and the object data|
