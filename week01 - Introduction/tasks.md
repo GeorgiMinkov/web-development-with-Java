@@ -90,5 +90,7 @@ Create a program that will read two dates from the standart input and print the 
  - printInfo() for both dates
 
 Example:
+| Dates | Output |
+|-------|--------|
 |2016 09 26\n1878 03 03| 50612\n2016 09 21 - 21 century. It is a LEAP year\n1978 03 03 - 19 century. |
 |2016 09 26\n2017 01 01| 98\n2016 09 26 - 21 century. It is LEAP year.\n2017 01 01 - 21 century. |	
