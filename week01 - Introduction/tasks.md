@@ -7,12 +7,19 @@ Write a method that calculates the factorial of a given number.
 Factorial is the product of all positive integers less than or equal to n. For example, factorial(4) = 4x3x2x1 = 24.
 
 # Task 1
-Write a method that returns the index of the first occurrence of given integer in a list.
-Assume that the index of the first element in the list is zero.
+Write a method that returns the index of the first occurrence of given integer in an array.
+The index of the first element in the list is zero.
+
 If the number does not exist return -1.
 
+Example:
+[5, 3, 8, 1, 3] 3 -> 1 
+
 # Task 2
-Write a method that returns the nth odd element of a list. If the index of the element exceeds the list size, then return -1.
+Write a method that returns the nth odd element of an array. If the index of the element exceeds the list size, then return -1.
+Example:
+[5, 3, 8, 1, 9] 4 -> 9
+[5, 3, 8, 1, 9] 5 -> -1
 
 # Task 3
 A palindrome is a word which reads the same backward or forward. 'abcba' is a palindrome.
