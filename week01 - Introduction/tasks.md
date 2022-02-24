@@ -29,7 +29,8 @@ Tip: Use word.charAt(i) to get the character at position i.
 # Task 4
 Save in characters/string related data the following pattern:
 
-```*
+```
+*
 * *
 * * *
 * * * *
