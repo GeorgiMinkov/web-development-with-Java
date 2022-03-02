@@ -1,11 +1,10 @@
-package week2.dates;
+package week02.dates;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.ZonedDateTime;
-import java.time.temporal.TemporalUnit;
 
 public class DateAPI {
 

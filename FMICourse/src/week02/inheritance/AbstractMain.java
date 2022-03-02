@@ -1,4 +1,4 @@
-package week2.inheritance;
+package week02.inheritance;
 
 public class AbstractMain {
   public static void main(String... args) {

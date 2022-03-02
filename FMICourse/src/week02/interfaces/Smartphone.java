@@ -1,4 +1,4 @@
-package week2.interfaces;
+package week02.interfaces;
 
 public class Smartphone implements GPS, Radio{
 
