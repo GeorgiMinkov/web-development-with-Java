@@ -3,17 +3,16 @@ package week02.exceptions;
 import java.io.IOException;
 
 public class ExceptionMain {
+
   public static void main(String... args) {
 //    iterateArray();
 
     try {
       test(false);
       System.out.println("After test method");
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       System.out.println("catch IOException");
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       System.out.println("catch Exception");
     } finally {
       System.out.println("Finally ");
@@ -30,10 +29,10 @@ public class ExceptionMain {
   }
 
   public static void test(boolean flag) throws Exception {
-    if(flag) {
+    if (flag) {
       throw new Exception();
     } else {
-      throw  new IOException();
+      throw new IOException();
     }
   }
 }
