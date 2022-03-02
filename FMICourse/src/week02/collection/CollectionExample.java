@@ -1,5 +1,7 @@
 package week02.collection;
 
+import week02.inheritance.Cat;
+
 import java.util.*;
 
 public class CollectionExample {
@@ -65,10 +67,21 @@ public class CollectionExample {
 //        map.entrySet().stream().forEach(System.out::println);
     }
 
+    private void hashCodeExample() {
+        Cat cat = new Cat();
+        Cat cat1 = new Cat();
+        Map<Cat, String> catStringMap = new HashMap<>();
+        catStringMap.put(cat, "tabby");
+        catStringMap.put(cat1, "asd");
+        catStringMap.entrySet().stream().forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
         CollectionExample collectionExample = new CollectionExample();
         collectionExample.defineListCollection();
 
         collectionExample.defineMapCollection();
+
+        collectionExample.hashCodeExample();
     }
 }
