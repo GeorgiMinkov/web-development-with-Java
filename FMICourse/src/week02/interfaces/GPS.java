@@ -3,7 +3,7 @@ package week02.interfaces;
 public interface GPS {
   void getCoordinates();
 
-  default public void getRoughCoordinates(){
+  default void getRoughCoordinates(){
     System.out.println("Fetching rough coordinates...");
   }
 

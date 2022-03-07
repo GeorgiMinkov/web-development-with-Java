@@ -1,16 +1,19 @@
 package week02.exceptions;
 
 import java.io.IOException;
+import week02.inheritance.Animal;
 
 public class ExceptionMain {
 
-  public static void main(String... args) {
+  public static void main(String... args) throws Exception {
 //    iterateArray();
-
+    // NullPointerException
+//    Animal cat = null;
+//    cat.makeSound();
     try {
       test(false);
       System.out.println("After test method");
-    } catch (IOException e) {
+    } catch (IOException | NullPointerException e) {
       System.out.println("catch IOException");
     } catch (Exception e) {
       System.out.println("catch Exception");
@@ -26,6 +29,9 @@ public class ExceptionMain {
     for (int i = 0; i < 10; i++) {
       System.out.println(array[i]);
     }
+  }
+  public static void testMyexception()  {
+    throw new MyCustomException();
   }
 
   public static void test(boolean flag) throws Exception {

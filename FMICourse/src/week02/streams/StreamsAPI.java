@@ -11,9 +11,10 @@ import java.util.stream.Stream;
 public class StreamsAPI {
 
   public static void main(String... args) {
-    Stream<Integer> integers = Stream.of(1,2,3,4,5,6,7,8,9,10);
-
+//    Stream<Integer> integers = Stream.of(1,2,3,4,5,6,7,8,9,10);
+//
 //    integers.forEach(number -> System.out.println(number));
+
 
     List<Item> items = new ArrayList<>();
     items.add(new Item("Item1", new BigDecimal(10)));
@@ -21,17 +22,19 @@ public class StreamsAPI {
     items.add(new Item("Testitem", new BigDecimal(20)));
     items.add(new Item("Testitem4", new BigDecimal(25)));
     items.add(new Item("FMI", new BigDecimal(20)));
-//    Stream.of(items.toArray()).forEach(System.out::println);
-    //print all items
-//    items.stream().forEach(System.out::println);
+    Stream.of(items.toArray()).forEach(System.out::println);
+//    print all items
+    items.stream().forEach(System.out::println);
 
-    //print all items which have price >= 20
-//    items.stream()
-//        .filter(item -> item.getPrice().compareTo(new BigDecimal(20)) >= 0)
-//        .forEach(System.out::println);
+//    print all items which have price >= 20
+    items.stream()
+        .filter(item -> item.getPrice().compareTo(new BigDecimal(20)) >= 0)
+        .forEach(System.out::println);
 
-
-    //find first and skip
+    List<Item> collectItems = items.stream()
+        .filter(item -> item.getPrice().compareTo(new BigDecimal(20)) >= 0)
+        .collect(Collectors.toList());
+//    find first and skip
     Optional<Item> first = items.stream().skip(2).findFirst();
     System.out.println(first.get());
 
@@ -39,19 +42,21 @@ public class StreamsAPI {
     Optional<Item> any = items.stream().findAny();
     System.out.println(any.get());
 
+
     //count
-    long count = items.stream().count();
+    long count = items.stream().skip(3).count();
     System.out.println(count);
 
     //map
-    BigDecimal reduce = items.stream().map(item -> item.getPrice())
+    BigDecimal reduce = items.stream()
+        .map(item -> item.getPrice()) // bigdecimal
         .reduce(new BigDecimal(0), (subtotal, element) -> subtotal.add(element));
     System.out.println(reduce);
 
-    List<Item> collectItems = items.stream()
+    List<Item> collectItems2 = items.stream()
         .filter(item -> item.getPrice().compareTo(new BigDecimal(20)) >= 0)
         .collect(Collectors.toList());
-    System.out.println(collectItems);
+    System.out.println(collectItems2);
     // reduce
     List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
     int result = numbers

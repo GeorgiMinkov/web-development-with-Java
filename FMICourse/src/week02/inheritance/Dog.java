@@ -1,5 +1,15 @@
 package week02.inheritance;
 
-public class Dog {
+import java.math.BigDecimal;
 
+public class Dog extends Animal {
+
+  @Override
+  public void makeSound() {
+    System.out.println("bau");
+  }
+
+  public Dog(BigDecimal weight ){
+    super(weight);
+  }
 }
