@@ -19,19 +19,11 @@ public class SearchExercise {
      * @return List<Order>
      */
     public List<Order> getActiveOrders(User user) {
-        return user.getOrders().stream()
-                .filter(Order::isActive)
-                .collect(toList());
+        return null;
     }
 
     public List<Order> getActiveOrdersByIteration(User user) {
-        List<Order> orderList = new ArrayList<>();
-        for (Order order : user.getOrders()) {
-            if (order.isActive()) {
-                orderList.add(order);
-            }
-        }
-        return orderList;
+        return null;
     }
 
     /**
@@ -41,20 +33,10 @@ public class SearchExercise {
      * @return Order
      */
     public Order getOrderById(List<Order> orders, long orderId) {
-        return orders.stream()
-                .filter(order -> order.getId() == orderId)
-                .findFirst()
-                .orElse(null);
-        // if you want to throw exception:
-        // .orElseThrow(() -> new MyException(MYErrorCode.NO_ORDER, orderId));
+        return null;
     }
 
     public Order getOrderByIdIteration(List<Order> orders, long orderId) {
-        for (Order order : orders) {
-            if (order.getId() == orderId) {
-                return order;
-            }
-        }
         return null;
     }
 
@@ -65,29 +47,21 @@ public class SearchExercise {
      * @return List<Order>
      */
     public List<Order> getOrdersThatHaveItemDescription(User user, String description) {
-        return user.getOrders().stream()
-                .filter(el -> !el.getOrderLines()
-                        .stream()
-                        .filter(orderLine -> description.equals(orderLine.getItem().getDescription()))
-                        .findAny().isEmpty()
-                )
-                .collect(toList());
+        return null;
     }
 
     /**
      * @return true if customer has at least one order with status ACTIVE
      */
     public boolean hasActiveOrders(User user) {
-        return user.getOrders().stream()
-                .anyMatch(Order::isActive);
+        return false;
     }
 
     /**
      * Return true if inside the Order we don't have OrderLine with special offer
      */
     public boolean canBeReturned(Order order) {
-        return order.getOrderLines().stream()
-                .noneMatch(OrderLine::isSpecialOffer);
+        return false;
     }
 
     /**
@@ -96,7 +70,6 @@ public class SearchExercise {
      * @return
      */
     public Optional<Order> getMaxPriceOrder(User user) {
-        return user.getOrders().stream()
-                .max(Comparator.comparing(Order::getTotalPrice));
+        return null;
     }
 }
