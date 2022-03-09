@@ -1,6 +1,6 @@
-package week02.collection;
+package lecture.week02.collection;
 
-import week02.inheritance.Cat;
+import lecture.week02.inheritance.Cat;
 
 import java.util.*;
 

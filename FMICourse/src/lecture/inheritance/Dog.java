@@ -1,4 +1,4 @@
-package week2.inheritance;
+package lecture.inheritance;
 
 public class Dog {
 

@@ -1,4 +1,4 @@
-package week01;
+package lecture.week01;
 
 public class SimpleMain {
 

@@ -1,5 +1,12 @@
+import org.junit.Test;
+
 public class FMICourse {
     public FMICourse() {
+    }
+
+    @Test
+    public void test() {
+
     }
 
     public static void main(String[] args) {

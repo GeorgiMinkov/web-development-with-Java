@@ -1,4 +1,4 @@
-package week01.array;
+package lecture.week01.array;
 
 import java.util.Random;
 import java.util.Scanner;

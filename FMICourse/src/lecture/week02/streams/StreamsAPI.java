@@ -1,4 +1,4 @@
-package week02.streams;
+package lecture.week02.streams;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

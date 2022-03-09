@@ -1,4 +1,4 @@
-package week01.oop;
+package lecture.week01.oop;
 
 public class Bicycle extends Object {
 

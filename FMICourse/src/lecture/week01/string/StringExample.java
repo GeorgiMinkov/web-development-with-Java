@@ -1,4 +1,4 @@
-package week01.string;
+package lecture.week01.string;
 
 public class StringExample {
 

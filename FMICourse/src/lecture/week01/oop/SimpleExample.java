@@ -1,6 +1,4 @@
-package week01.oop;
-
-import week01.SimpleMain;
+package lecture.week01.oop;
 
 public class SimpleExample {
 

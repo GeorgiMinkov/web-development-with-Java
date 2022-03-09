@@ -1,4 +1,4 @@
-package week02.exceptions;
+package lecture.week02.exceptions;
 
 public class MyCustomException extends RuntimeException {
 

@@ -1,7 +1,6 @@
-package week02.exceptions;
+package lecture.week02.exceptions;
 
 import java.io.IOException;
-import week02.inheritance.Animal;
 
 public class ExceptionMain {
 

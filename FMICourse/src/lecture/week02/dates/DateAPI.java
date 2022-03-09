@@ -1,11 +1,8 @@
-package week02.dates;
+package lecture.week02.dates;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Period;
-import java.time.ZonedDateTime;
 
 public class DateAPI {
 

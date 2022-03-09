@@ -1,6 +1,4 @@
-package week01;
-
-import java.util.Random;
+package lecture.week01;
 
 public class SimpleMainClean {
 

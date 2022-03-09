@@ -1,0 +1,17 @@
+User
+    order
+        Basket {List<Product>} -> Product
+
+Customer {List<Order>}
+    Order {enums ; List<OrderLine> ; LocalDate ; enum PaymentMethod}
+        OrderList { enum ; Product ;  }
+            Product { String }
+        PaymentMethod
+
+
+
+User {List<Order>}
+    Order {enum Status ; Basket List<OrderLine> ; LocalDate ; enum PaymentMethod}
+        OrderList { enum ; Product ;  }
+            Item { String }
+        PaymentMethod

@@ -1,4 +1,4 @@
-package week02.inheritance;
+package lecture.week02.inheritance;
 
 import java.math.BigDecimal;
 import java.util.Objects;
