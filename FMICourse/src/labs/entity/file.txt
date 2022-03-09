@@ -1,0 +1,10 @@
+Structure:
+User {List<Order>}
+    Order {enum Status ; List<OrderLine> ; LocalDate ; enum PaymentMethod}
+        OrderLine { enum ; Item ;  }
+            Item { String }
+        PaymentMethod
+
+
+Order of implementation: Item -> OrderList -> PaymentMethod -> Order -> User
+tl;dr: User holds basket(list of Orders). Order holds list of OrderLine. OrderLine hold the item product
