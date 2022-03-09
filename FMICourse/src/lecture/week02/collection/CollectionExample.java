@@ -13,6 +13,7 @@ public class CollectionExample {
         list.add("three");
         printCollection(list);
 
+
         list = Arrays.asList("four", "five", "six");
         printCollection(list);
 
@@ -21,6 +22,13 @@ public class CollectionExample {
         list.add("eight");
         list.add("nine");
         printCollection(list);
+
+        List<Integer> integerList = Arrays.asList(156, 256, 356);
+        printCollection(integerList);
+
+        Set<String> set = new HashSet<>();
+        set.add("asd");
+
     }
 
     private <T> void printCollection(final Collection<T> collection) {
@@ -38,13 +46,13 @@ public class CollectionExample {
         System.out.println("-----------------------");
 
 
-//        collection = new ArrayList<>(); you cannot do this when final keyword is present
+//        collection = new ArrayList<>(); //you cannot do this when final keyword is present
     }
 
     private void defineMapCollection() {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "one");
-        map.put(2, "two");
+        map.put(Integer.valueOf(2), "two");
         map.put(3, "three");
         printMap(map);
 
@@ -70,18 +78,24 @@ public class CollectionExample {
     private void hashCodeExample() {
         Cat cat = new Cat();
         Cat cat1 = new Cat();
+
         Map<Cat, String> catStringMap = new HashMap<>();
         catStringMap.put(cat, "tabby");
+
+        System.out.println(cat.hashCode());
+        System.out.println(cat1.hashCode());
+
         catStringMap.put(cat1, "asd");
+
         catStringMap.entrySet().stream().forEach(System.out::println);
     }
 
     public static void main(String[] args) {
         CollectionExample collectionExample = new CollectionExample();
-        collectionExample.defineListCollection();
+//        collectionExample.defineListCollection();
 
-        collectionExample.defineMapCollection();
-
+//        collectionExample.defineMapCollection();
+//
         collectionExample.hashCodeExample();
     }
 }
