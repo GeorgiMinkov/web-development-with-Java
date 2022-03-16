@@ -1,4 +1,4 @@
-package labs.collections;
+package labs.week02.collections;
 
 public class Exercise {
 

@@ -1,4 +1,4 @@
-package labs.vo;
+package labs.week02.streams.vo;
 
 public enum PaymentMethod {
     CARD,
