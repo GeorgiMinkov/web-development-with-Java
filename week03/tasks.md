@@ -43,6 +43,25 @@ public interface Store {
    */
   void clear();
 
+  /**
+   * Return all books grouped by author
+   * @return
+   */
+  Map<String, List<Book>> getAllBooksGroupByAuthor();
+
+
+  /**
+   * Return all books grouped by publisher
+   * @return
+   */
+  Map<String, List<Book>> getAllBooksGroupByPublisher();
+
+  /**
+   * Filter books by given filter
+   * @param bookPredicate
+   * @return
+   */
+  List<Book> getAllBooksFilterBy(Predicate<Book> bookPredicate);
 
 }
 ```
