@@ -61,6 +61,7 @@ As a part of this task you should choose the correct collection.
 # Task 1
 
 Create FileManagement system with the following structure. 
+File is an abstract class
 ![](images/FileManagement.png)
 Create class FileManagement which reads rows for standard input(TIP: Use Scanner class [here](https://www.geeksforgeeks.org/scanner-class-in-java/)) until "END". The class should implement the following commands:
 * MAKE - create a file
