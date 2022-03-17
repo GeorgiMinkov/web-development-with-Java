@@ -63,14 +63,27 @@ As a part of this task you should choose the correct collection.
 Create FileManagement system with the following structure. 
 File is an abstract class
 ![](images/FileManagement.png)
+
 Create class FileManagement which reads rows for standard input(TIP: Use Scanner class [here](https://www.geeksforgeeks.org/scanner-class-in-java/)) until "END". The class should implement the following commands:
-* MAKE - create a file
+* MAKE - create a file. Rules: if the forth argument of the input command is *CONTENT* we need to create ContentFile Object. If the name ends with '.avi' or '.mp3' we need to create a 'MediaContentFile'. In all other cases create DocumentContentFile.
 * MOVE - move file to a new location
 * MOD - modify the content of the specific file
 * COPY - copy file 
 * DEL - remove the file
-* EXEC - execute executable file1
-* INFO - get full information about the file 
+* EXEC - execute executable file. Print in the standard output ```Executing [[executableFileName]]```
+* INFO - get full information about the file. To visualize information of the file follow the pattern: 
+```
+Name: <location>/<name> [[DELETED]]
+Creation date: <creation date>
+Last <modification|execution> date: <last modification|execution date>
+```
+  where DELETED is shown if the file was deleted. If the file is executable we have additional row
+```
+Required resources:
+<resource name 1>
+<resource name 2> …
+<resource name N>
+```
 
 ```
 Example input:
