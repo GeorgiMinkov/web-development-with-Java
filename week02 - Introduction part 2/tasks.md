@@ -1,14 +1,3 @@
-Create your own repository inside the organization from the last lecture. 
-
-Inside it create new project in which you will solve the lab tasks.
-
-For today's lab please copy the structure from the FMICourse project (package labs).
-You have two set of tasks: 
-- labs/colelctions: Exercise on collections. All tasks are under "Exercise" class, for some you need to implement the entity package
-- streams: Exercise for streams, first you need to impelement the labs/entity package (in file.txt you can see some tips). Then implement the streams/SearchExercise and finally stream/SearchExercise
-- vo: enums
-
-Additional tasks:
 # Task 0
 Obtain a list of products belongs to category “Books” with price > 100
 
