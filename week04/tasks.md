@@ -151,7 +151,7 @@ public interface TicketService {
 
   Ticket findById(Long id);
 
-  void updateTicketById(Long id);
+  void updateTicketById(Ticket id);
 
   /**
    * Return all tickets bought by a user
