@@ -6,12 +6,14 @@ import com.fmi.web.theaterticketsystem.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EventServiceImpl implements EventService {
 
-  private EventRepository eventRepository;
+  private final EventRepository eventRepository;
 
-  private TicketRepository ticketRepository;
+  private final TicketRepository ticketRepository;
 
   @Autowired
   public EventServiceImpl(EventRepository eventRepository,
@@ -22,21 +24,22 @@ public class EventServiceImpl implements EventService {
 
   @Override
   public void createEvent(Event u) {
-
+    eventRepository.createEvent(u);
   }
 
   @Override
   public void removeEvent(Long id) {
-
+    eventRepository.removeEvent(id);
   }
 
   @Override
   public Event findById(Long id) {
-    return null;
+    return Optional.ofNullable(eventRepository.findById(id))
+                   .orElseThrow();
   }
 
   @Override
   public void updateEvent(Event event) {
-
+    eventRepository.updateEvent(event);
   }
 }
