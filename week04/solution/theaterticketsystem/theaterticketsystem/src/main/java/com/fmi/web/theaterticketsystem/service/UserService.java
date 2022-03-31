@@ -16,11 +16,11 @@ public interface UserService {
   /**
    * Return all visited events
    */
-  List<Event> getAllVisitedEvent();
+  List<Event> getAllVisitedEvent(User user);
 
   /**
    * Return all visited events for the past month
    */
-  List<Event> getAllVisitedEventsInPastMonth();
+  List<Event> getAllVisitedEventsInPastMonth(User user);
 
 }

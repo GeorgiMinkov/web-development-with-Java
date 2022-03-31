@@ -22,4 +22,6 @@ public interface UserRepository {
    * Update user information
    */
   void updateUser(User user);
+
+  User findByEmail(String email);
 }
