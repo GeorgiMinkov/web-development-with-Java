@@ -1,5 +1,6 @@
 package com.fmi.web.theaterticketsystem.service;
 
+import com.fmi.web.theaterticketsystem.logger.Logger;
 import com.fmi.web.theaterticketsystem.model.Event;
 import com.fmi.web.theaterticketsystem.repository.EventRepository;
 import com.fmi.web.theaterticketsystem.repository.TicketRepository;
@@ -15,15 +16,21 @@ public class EventServiceImpl implements EventService {
 
   private final TicketRepository ticketRepository;
 
+  private final  Logger logger;
+
   @Autowired
   public EventServiceImpl(EventRepository eventRepository,
-      TicketRepository ticketRepository) {
+      TicketRepository ticketRepository,
+      Logger logger) {
     this.eventRepository = eventRepository;
     this.ticketRepository = ticketRepository;
+    this.logger = logger;
   }
 
   @Override
   public void createEvent(Event u) {
+    this.logger.info("Create new event with name " + u.getName());
+    this.logger.debug("DEBUG log");
     eventRepository.createEvent(u);
   }
 

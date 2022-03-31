@@ -19,5 +19,9 @@ public class AppConfig {
     @Data
     public class LoggerConfig {
         private String level;
+
+        public String getLevel() {
+            return level;
+        }
     }
 }
