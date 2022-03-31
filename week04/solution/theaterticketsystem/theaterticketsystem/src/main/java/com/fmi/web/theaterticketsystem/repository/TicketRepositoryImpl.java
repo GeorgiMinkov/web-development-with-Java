@@ -8,14 +8,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class TicketRepositoryImpl implements TicketRepository{
   private final ConcurrentHashMap<Long, Ticket> tickets = new ConcurrentHashMap<>();
+  private Long currentElementId = 0L;
 
   @Override
   public void createTicket(Ticket u) {
-    tickets.putIfAbsent(u.getTicketId(), u);
+    u.setTicketId(++currentElementId);
+    tickets.put(u.getTicketId(), u);
   }
 
   @Override
-  public void removeTicket(Long id) {
+  public synchronized void removeTicket(Long id) {
     tickets.remove(id);
   }
 

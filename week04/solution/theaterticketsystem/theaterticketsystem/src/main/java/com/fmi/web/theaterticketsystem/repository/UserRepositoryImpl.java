@@ -8,9 +8,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
     private final ConcurrentHashMap<Long, User> users = new ConcurrentHashMap<>();
+    private Long currentElementId = 0L;
 
     @Override
-    public void addUser(final User u) {
+    public synchronized void addUser(final User u) {
+        u.setId(++currentElementId);
         users.putIfAbsent(u.getId(), u);
     }
 
