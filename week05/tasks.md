@@ -77,8 +77,8 @@ Create different profiles named: naroden, stairichen
 
 Based on the runned spring profile initilize two list with different event names and description.
 ```
-config.event.name='Chervenata shapchitsa', 'Test'
-config.event.description='',''
+config.event.name=Chervenata shapchitsa,Test
+config.event.description=alabala,testing description
 ```
 
 From those list initilized simple Events (date data can be random generated)
