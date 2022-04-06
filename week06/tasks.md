@@ -1,6 +1,6 @@
 For all your tasks use your Ticket system project from week05
 
-## Task 00
+# Task 00
 *To call REST endpoitns we will use Postman tool.*
 
 Download from **[here](https://www.postman.com/downloads/)**
@@ -21,7 +21,7 @@ How to setup a call
 6. Click on 'Send' and see the result
    ![](images/result.png)
 
-## Task 01 - Defining controllers in the Ticket system
+# Task 01 - Defining controllers in the Ticket system
 In the next task we will use our ongoing Ticket system. (you can use implementation from this [repo](https://github.com/GeorgiMinkov/web-development-with-Java/tree/main/week05/solution/theaterticketsystem) {pay attantion: ticket service is not implement})
 
 ***NB:*** *DTO* pattern and *Mappers* will be discussed in depth inside the next lecture
