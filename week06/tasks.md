@@ -49,6 +49,7 @@ In the next task we will use our ongoing Ticket system. (you can use implementat
      - HTTP body -> JSON formatted payload
         ```
         {
+            id: 1,
             userName: "zeee",
             email: "zee@test.test"
         }
