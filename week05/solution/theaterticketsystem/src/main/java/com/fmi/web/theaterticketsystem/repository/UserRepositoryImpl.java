@@ -12,7 +12,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public synchronized void addUser(final User u) {
-        u.setId(++currentElementId);
+//        u.setId(++currentElementId);
         users.putIfAbsent(u.getId(), u);
     }
 

@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
-public class TheaterticketsystemApplication implements CommandLineRunner {
+public class TheaterticketsystemApplication{
 	private final EventService eventService;
 	private final UserService userService;
 	private final TicketService ticketService;
@@ -30,10 +30,5 @@ public class TheaterticketsystemApplication implements CommandLineRunner {
 		this.userService = userService;
 		this.ticketService = ticketService;
 		this.logger = logger;
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		logger.debug("This is a new log");
 	}
 }
