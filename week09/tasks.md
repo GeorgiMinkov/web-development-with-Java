@@ -5,6 +5,15 @@ Setup a PostgreSQL DB on your machine. If you have problem you can use the follo
 
 (***NB***) you can use MySQL DB too or your preferable DB.
 
+```
+spring.datasource.url=jdbc:postgresql://localhost:5433/postgres
+spring.datasource.username=postgres
+spring.datasource.password=pgadmin
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.database=postgresql
+spring.jpa.hibernate.ddl-auto=update
+```
+
 # Task 1
 Setup a connection from Ticket system to your newly created DB.
 
