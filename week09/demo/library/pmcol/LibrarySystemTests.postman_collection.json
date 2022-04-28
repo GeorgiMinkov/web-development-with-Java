@@ -1,0 +1,1585 @@
+{
+	"info": {
+		"_postman_id": "f9ed899c-1bd5-48bc-8c64-7b9001d3ea36",
+		"name": "LibrarySystemTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bookControllerTests",
+			"item": [
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4b0854e5-49f6-4a55-b738-da3b81c3b349",
+								"exec": [
+									"pm.test(\"GetAll was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByVar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2afe7939-640a-4544-ad34-0907ec090101",
+								"exec": [
+									"pm.environment.get(\"isbn\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Book has expected ISBN\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"isbn\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "88f04563-d35e-4e14-9b9f-fbb59485426d",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"9155679523808\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/books/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postNew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "13839aa4-7956-4d9f-90f6-1185c712d65a",
+								"exec": [
+									"pm.test(\"Status code is 200, postNew request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"numOfPages\":102,\"releaseYear\":2003,\"title\":\"Tha Savior\",\"authors\":[{\"id\":5,\"firstName\":\"J. R.\",\"lastName\":\"Ward\"}],\"isbn\":\"6545658438988\",\"genre\":\"Mystery\",\"addedByFirstName\":\"Georgi\",\"addedByLastName\":\"Georgiev\",\"addedByPosition\":\"EMPLOYEE\"}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "922e210b-3662-464e-ae7e-8b96b844ee1d",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"6545658438988\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "91fd54bd-291e-4367-8546-4f8e3cfd0e2f",
+								"exec": [
+									"pm.test(\"Status code is 200, update request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"numOfPages\":1337,\"releaseYear\":1337,\"title\":\"The Test\",\"authors\":[{\"id\":5,\"firstName\":\"Test\",\"lastName\":\"Test\"}],\"isbn\":\"6545658438988\",\"genre\":\"Test\",\"addedByFirstName\":\"Test\",\"addedByLastName\":\"Test\",\"addedByPosition\":\"EMPLOYEE\"}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/books/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testUpdate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "295a18fb-237e-4d6e-b405-013790095dbc",
+								"exec": [
+									"pm.environment.get(\"isbn\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Book has expected ISBN\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"isbn\");\r",
+									"});\r",
+									"pm.test(\"Update was proper\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3db41291-1fa8-427b-b09f-c9404ff530a4",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"6545658438988\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/books/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e8f2ea52-ad41-49ef-91f3-a41ab0fde485",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2bc6f604-97ee-416b-9552-1e8f762071a4",
+								"exec": [
+									"pm.test(\"Status code is 200, delete request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/books/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testDelete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d39d9f9-6877-47b4-8c06-e9ff5f818bd7",
+								"exec": [
+									"pm.test(\"Status code is 404, book was properly deleted\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/books/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"books",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "employeeControllerTests",
+			"item": [
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "335dd1f6-e26f-421f-a4a5-9286ce09978e",
+								"exec": [
+									"pm.test(\"GetAll was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByVar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55d3d48c-c7f1-448a-9885-13c91e36ecef",
+								"exec": [
+									"pm.environment.get(\"id\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Employee has expected ID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b0e95b4e-1127-4538-9250-3fad84f8cc9e",
+								"exec": [
+									"pm.environment.set(\"id\", \"1\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/employees/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postNew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a597efe7-c4ee-4d70-a0fc-0e2eca7de065",
+								"exec": [
+									"pm.test(\"Status code is 200, postNew request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstName\": \"Pesho\",\r\n        \"lastName\": \"Petkov\",\r\n        \"id\": 3,\r\n        \"position\": \"EMPLOYEE\"\r\n    }",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1b0c9d9a-5d13-4a16-bb3d-7364ee334e0d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "45e39549-076e-4c81-a857-bc22c251dafb",
+								"exec": [
+									"pm.test(\"Status code is 200, update request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstName\": \"Test\",\r\n        \"lastName\": \"Testov\",\r\n        \"id\": 3,\r\n        \"position\": \"EMPLOYEE\"\r\n    }",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/employees/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testUpdate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "985cf298-599f-4937-bcff-a5de8a8794e0",
+								"exec": [
+									"pm.environment.get(\"id\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Employee has expected ID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"pm.test(\"Update was proper\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3cf61cd7-986b-4779-9cd0-6ae803a95b14",
+								"exec": [
+									"pm.environment.set(\"id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/employees/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "855fe9cc-121c-41b2-a732-c21b20c43e39",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4bb6aa93-a56c-4b30-82b7-18efb73bba8c",
+								"exec": [
+									"pm.test(\"Status code is 200, delete request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/employees/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testDelete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20814820-ccc3-4c30-9872-f2881e0dd130",
+								"exec": [
+									"pm.test(\"Status code is 404, employee was properly deleted\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/employees/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "magazineControllerTests",
+			"item": [
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44ffa1b7-aaa5-4e90-9a7f-54fd27ddfa94",
+								"exec": [
+									"pm.test(\"GetAll was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/magazines",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByVar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e362eb58-a4ab-47c9-942d-b49e267c83d1",
+								"exec": [
+									"pm.environment.get(\"isbn\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Magazine has expected ISBN\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"isbn\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0f70381d-85a7-4a94-acb5-a6fcaa2280d5",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"23512351234\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/magazines/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postNew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f1ecadd-bd5e-4319-b24c-55302de3d0d1",
+								"exec": [
+									"pm.test(\"Status code is 200, postNew request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateOfIssue\": \"2013-03-03\",\r\n    \"title\": \"NewMagazine\",\r\n    \"isbn\": \"6133713371337\",\r\n    \"genre\": \"NewGenre\",\r\n    \"addedByFirstName\": \"Ivan\",\r\n    \"addedByLastName\": \"Ivanov\",\r\n    \"addedByPosition\": \"EMPLOYEE\"\r\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/magazines",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bcc4d25c-c2ee-4786-90f0-efd7a35e4d9c",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"6133713371337\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dd457622-136c-4e59-9c39-b6900ef5ab5b",
+								"exec": [
+									"pm.test(\"Status code is 200, update request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"dateOfIssue\": \"2013-03-03\",\r\n        \"title\": \"Test\",\r\n        \"isbn\": \"6133713371337\",\r\n        \"genre\": \"TesterTest\",\r\n        \"addedByFirstName\": \"Test\",\r\n        \"addedByLastName\": \"Test\",\r\n        \"addedByPosition\": \"EMPLOYEE\"\r\n    }",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/magazines/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testUpdate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3fd0e66-93aa-438a-8cea-6a08865373d0",
+								"exec": [
+									"pm.environment.get(\"isbn\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Magazine has expected ISBN\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"isbn\");\r",
+									"});\r",
+									"pm.test(\"Update was proper\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "45ec1d34-a03d-4bf5-b941-d174c4cf12f4",
+								"exec": [
+									"pm.environment.set(\"isbn\", \"6133713371337\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/magazines/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fa07d10e-841a-4ea8-b1f7-f7744ca5e4df",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8a9e0470-110c-4383-a6db-1ab9e059ff57",
+								"exec": [
+									"pm.test(\"Status code is 200, delete request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/magazines/{{isbn}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines",
+								"{{isbn}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testDelete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07c21270-a716-4b1c-af63-f71ca890522b",
+								"exec": [
+									"pm.test(\"Status code is 404, magazine was properly deleted\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/magazines/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"magazines",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4b07c964-4e09-444a-b6ab-399b3027a1fb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f626c4b-756f-4837-93dd-41cb7c3b1fd5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "readerControllerTests",
+			"item": [
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "273d6cb5-668d-4e12-b521-dde0d13e73ee",
+								"exec": [
+									"pm.test(\"GetAll was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/readers",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByVar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "855e3504-0f03-4bda-a57c-487228ee9a17",
+								"exec": [
+									"pm.environment.get(\"id\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reader has expected ID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4f3634fc-67e9-45c5-8271-530364d2440f",
+								"exec": [
+									"pm.environment.set(\"id\", \"1\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/readers/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postNew",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdbf8b25-e9ec-4834-955b-82db40b3f63f",
+								"exec": [
+									"pm.test(\"Status code is 200, postNew request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"registerDate\": \"2020-06-15\",\r\n        \"expDate\": null,\r\n        \"periodInMonths\": 0,\r\n        \"id\": 3,\r\n        \"firstName\": \"Pesho\",\r\n        \"lastName\": \"Petkov\"\r\n    }",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/readers",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "72bda7fe-b09a-42f8-bdbb-d1b48247a1d0",
+								"exec": [
+									"pm.environment.set(\"id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e3fd25c-b56d-48ce-aee5-1d6825be7e5f",
+								"exec": [
+									"pm.test(\"Status code is 200, update request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ensure update was proper\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"registerDate\": \"2020-06-15\",\r\n        \"expDate\": null,\r\n        \"periodInMonths\": 0,\r\n        \"id\": 3,\r\n        \"firstName\": \"Test\",\r\n        \"lastName\": \"Test\"\r\n    }",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/readers/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testUpdate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a575da54-19c1-49ef-a2a4-d5bd2e9fa54a",
+								"exec": [
+									"pm.environment.get(\"id\");\r",
+									"\r",
+									"pm.test(\"GetByVar request accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Reader has expected ID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});\r",
+									"pm.test(\"Update was proper\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "554a49b1-0038-4ea3-b4da-fbb368b1ca2a",
+								"exec": [
+									"pm.environment.set(\"id\", \"3\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/employees/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"employees",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c3fc47a3-528f-44d8-963b-8cfd623396a1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea22fadf-63e5-4d85-b076-0dbd9ef696c5",
+								"exec": [
+									"pm.test(\"Status code is 200, delete request was accepted\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/readers/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testDelete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c0204a8a-2455-40a8-be0b-af877f483f6c",
+								"exec": [
+									"pm.test(\"Status code is 404, employee was properly deleted\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/readers/{{id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"readers",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "18049bb5-af5b-43e0-af42-61319314f983",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e052fad-f1fa-4f5c-8691-3a7c7b9121c1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
