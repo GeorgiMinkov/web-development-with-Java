@@ -1,26 +1,12 @@
 package com.fmi.web.theaterticketsystem.repository;
 
 import com.fmi.web.theaterticketsystem.model.Ticket;
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TicketRepository {
-  /**
-   * Create ticket
-   */
-  void createTicket(Ticket u);
+@Repository
+public interface TicketRepository extends CrudRepository<Ticket, Long> {
 
-  /**
-   * Remove ticket
-   */
-  void removeTicket(Long id);
-
-  /**
-   * Find ticket by Id
-   */
-  Ticket findById(Long id);
-
-  /**
-   * Update ticket information
-   */
-  void updateTicketById(Ticket ticket);
-
+  List<Ticket> findAll();
 }

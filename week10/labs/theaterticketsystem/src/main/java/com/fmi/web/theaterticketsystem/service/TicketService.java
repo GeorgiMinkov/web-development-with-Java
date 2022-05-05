@@ -14,13 +14,13 @@ public interface TicketService {
    * Can NOT duplicate row and seat same event.
    * @param u
    */
-  void createTicket(Ticket u);
+  Ticket createTicket(Ticket u);
 
   void removeTicket(Long id);
 
   Ticket findById(Long id);
 
-  void updateTicketById(Long id);
+  Ticket updateTicketById(Long id);
 
   /**
    * Return all tickets bought by a user

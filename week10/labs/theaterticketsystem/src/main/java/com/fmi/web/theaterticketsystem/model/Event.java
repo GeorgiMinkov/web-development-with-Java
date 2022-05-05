@@ -27,11 +27,14 @@ public class Event {
   public Event() {
   }
 
-  public Event(final String name, final LocalDateTime date, final String description) {
+  public Event(Long eventId , final String name, final LocalDateTime date, final String description) {
+    this.eventId = eventId;
     this.name = name;
     this.date = date;
     this.description = description;
   }
+
+
 
   public Long getEventId() {
     return eventId;

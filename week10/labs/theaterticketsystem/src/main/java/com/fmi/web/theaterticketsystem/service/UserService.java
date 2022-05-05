@@ -13,6 +13,8 @@ public interface UserService {
 
   void updateUserInformation(User user);
 
+  List<User> findAll();
+
   /**
    * Return all visited events
    */

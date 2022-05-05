@@ -1,9 +1,12 @@
 package com.fmi.web.theaterticketsystem.dto;
 
+import java.util.List;
+
 public class UserDto {
   private Long id;
   private String userName;
   private String email;
+  private List<TicketDto> tickets;
 
   public UserDto() {
   }
@@ -36,5 +39,13 @@ public class UserDto {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public List<TicketDto> getTickets() {
+    return tickets;
+  }
+
+  public void setTickets(List<TicketDto> tickets) {
+    this.tickets = tickets;
   }
 }

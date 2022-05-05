@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     //TODO fix this method
     @Override
     public List<Event> getAllVisitedEvent(final User user) {

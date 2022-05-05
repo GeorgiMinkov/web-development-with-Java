@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class EventDtoMapper {
 
   public Event converToEntity(EventDto eventDto) {
-    return new Event(eventDto.getName(),eventDto.getDate(), eventDto.getDescription());
+    return new Event(eventDto.getEventId(),eventDto.getName(),eventDto.getDate(), eventDto.getDescription());
   }
 
   public EventDto convertToDto(Event event) {
