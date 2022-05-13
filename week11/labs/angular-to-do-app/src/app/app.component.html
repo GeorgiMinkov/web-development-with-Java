@@ -1,0 +1,5 @@
+<span>{{title}}</span>
+<button mat-button color="warn" (click)="onClick()">Show</button>
+<button mat-button color="warn" (click)="hide()">Hide</button>
+<input type="text" name="name" (input)="inputEvent($event)">
+<app-item *ngIf="showItem"></app-item>
